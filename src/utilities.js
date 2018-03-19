@@ -4,7 +4,7 @@ export function isLessThan7Days(date1, date2) {
 }
 
 export function isAWeek(date1, date2) {
-  return (Math.abs(date2 - date1) / (24 * 60 * 60 * 1000)) == 7;
+  return (Math.abs(date2 - date1) / (24 * 60 * 60 * 1000)) === 7;
 }
 
 export function convertDateToString(d, shouldIncludeTime) {
@@ -41,7 +41,7 @@ export function formatTime(obj) {
   if (!obj.endTime) obj.endTime = new Date();
   if (!obj.startTime) obj.startTime = new Date('2004-01-01');
 
-  if(isAWeek(obj.startTime, obj.endTime)){
+  if (isAWeek(obj.startTime, obj.endTime)) {
     obj.time = `now 7d`;
   }else {
     const shouldIncludeTime = isLessThan7Days(obj.startTime, obj.endTime);
