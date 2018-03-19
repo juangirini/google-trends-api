@@ -1,6 +1,6 @@
 {
   "name": "google-trends-api-jg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "an API layer on top of google trends (adapted by Juan Girini)",
   "main": "lib/google-trends-api.min.js",
   "scripts": {
