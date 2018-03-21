@@ -8,6 +8,7 @@ import {
   formatKeywords,
   getResults,
   isLessThan7Days,
+  isAWeek,
   parseResults,
 } from '../src/utilities';
 import request from '../src/request';
@@ -24,6 +25,17 @@ describe('utilities', () => {
 
       expect(isLessThan7Days(d1, d2)).to.be.true;
       expect(isLessThan7Days(d2, d3)).to.be.false;
+    });
+  });
+
+  describe('isAWeek', () => {
+    it('should return true if difference is one week', () => {
+      const d1 = new Date('2017-02-04');
+      const d2 = new Date('2017-02-11');
+      const d3 = new Date('2017-02-01');
+
+      expect(isAWeek(d1, d2)).to.be.true;
+      expect(isAWeek(d2, d3)).to.be.false;
     });
   });
 
@@ -106,6 +118,15 @@ describe('utilities', () => {
 
           expect(result.startTime).to.equal(endTime);
           expect(result.endTime).to.equal(startTime);
+        });
+
+    it('should use the one week comparison string',
+        () => {
+          const endTime = new Date();
+          const startTime = new Date(Date.now() - (7 * 24 * 60 * 60 * 1000));
+          const result = formatTime({startTime, endTime});
+
+          expect(result.time).to.equal('now 7-d');
         });
   });
 

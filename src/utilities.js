@@ -42,7 +42,7 @@ export function formatTime(obj) {
   if (!obj.startTime) obj.startTime = new Date('2004-01-01');
 
   if (isAWeek(obj.startTime, obj.endTime)) {
-    obj.time = `now 7d`;
+    obj.time = `now 7-d`;
   }else {
     const shouldIncludeTime = isLessThan7Days(obj.startTime, obj.endTime);
 

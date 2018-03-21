@@ -1,6 +1,6 @@
 'use strict';
 
-// var googleTrends = require('./lib/google-trends-api.min.js');
+var googleTrends = require('./lib/google-trends-api.js');
 
 /* ******************* Autocomplete **************************/
 
@@ -15,16 +15,20 @@
 // });
 
 /* ******************* Interest over time **************************/
+let endTime = new Date();
+let startTime = new Date(endTime.getTime() - (7 * 24 * 60 * 60 * 1000));
 
-// googleTrends.interestOverTime({keyword: 'Valentines Day'})
-// .then((res) => {
-//   console.log('this is res', res);
-// })
-// .catch((err) => {
-//   console.log('got the error', err);
-//   console.log('error message', err.message);
-//   console.log('request body',  err.requestBody);
-// });
+googleTrends.interestOverTime({
+  keyword: 'Bitcoin', startTime: startTime, endTime: endTime,
+})
+.then((res) => {
+  console.log('this is res', res);
+})
+.catch((err) => {
+  console.log('got the error', err);
+  console.log('error message', err.message);
+  console.log('request body', err.requestBody);
+});
 
 // googleTrends.interestOverTime({
 //   keyword: 'Valentines Day',
